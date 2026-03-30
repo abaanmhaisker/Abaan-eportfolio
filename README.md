@@ -12,17 +12,17 @@ This portfolio is built as a completely static front-end web application (HTML/C
 - **Interactive Terminal**: Custom CSS keyframe-animated command-line prompts summarizing personal information without relying on heavy external libraries or personal photography.
 
 ## Live Demo
-(Insert your GitHub Pages live URL here once pushed!)
+**[View Live Portfolio](https://abaanmhaisker.github.io/Abaan-eportfolio/)**
 
 ## Working with the Repository Locally
 To view the site, you do not need any package installation:
 1. Clone or download this repository.
 2. Open the `portfolio` directory in VS Code or your preferred IDE.
-3. Start a local server:
+3. Start a local server using Node.js:
    ```bash
-   python -m http.server 8080
+   npx http-server
    ```
-4. Or use the built-in VS Code "Live Server" extension.
+   Or use the built-in VS Code "Live Server" extension.
 
 ---
 *Built with ❤️ by Abaan Mhaisker*
