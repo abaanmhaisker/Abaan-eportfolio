@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Student Enrollment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>EnrollAdmin</h2>
+        </div>
+        <ul class="nav-links" id="sidebarList">
+            <li class="active"><a href="#" onclick="loadPage('dashboard', event)">Dashboard</a></li>
+            <li><a href="#" onclick="loadPage('addCourse', event)">Add Course</a></li>
+            <li><a href="#" onclick="loadPage('addTeacher', event)">Add Teacher</a></li>
+            <li><a href="#" onclick="loadPage('addDepartment', event)">Add Department</a></li>
+            <li><a href="#" onclick="logout(event)" class="logout-link">Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="top-header">
+            <h1 id="pageTitle">Overview Dashboard</h1>
+            <div class="header-actions">
+                <div class="notification-badge">
+                    <span class="icon">🔔</span>
+                    <span class="badge" id="notifBadge">3</span>
+                </div>
+                <div class="user-profile">
+                    <span>Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Pages Container -->
+        <div class="pages-container">
+            <!-- Dashboard View -->
+            <section id="dashboardPage" class="page-view active">
+                <div class="dashboard-grid">
+                    <!-- Left Column: Enrollment Requests -->
+                    <div class="card column">
+                        <div class="card-header">
+                            <h3>Enrollment Requests</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="request-list" id="enrollmentList">
+                                <!-- Requests dynamically injected -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Courses -->
+                    <div class="card column">
+                        <div class="card-header">
+                            <h3>Active Courses</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="course-list" id="courseList">
+                                <!-- Courses dynamically injected -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modals / Details section container -->
+                <div class="details-section" id="detailsSection">
+                    <!-- Detail views injected here -->
+                </div>
+            </section>
+
+            <!-- Add Course Form -->
+            <section id="addCoursePage" class="page-view hide">
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h3>Add New Course</h3>
+                    </div>
+                    <form onsubmit="addEntity(event, 'Course')">
+                        <div class="input-group">
+                            <label>Course Name</label>
+                            <input type="text" id="courseName" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Course ID</label>
+                            <input type="text" id="courseID" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Credits</label>
+                            <input type="number" id="courseCredits" min="1" max="10" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Add Course</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Add Teacher Form -->
+            <section id="addTeacherPage" class="page-view hide">
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h3>Add New Teacher</h3>
+                    </div>
+                    <form onsubmit="addEntity(event, 'Teacher')">
+                        <div class="input-group">
+                            <label>Teacher Name</label>
+                            <input type="text" id="teacherName" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Department</label>
+                            <input type="text" id="teacherDept" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="teacherEmail" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Add Teacher</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Add Department Form -->
+            <section id="addDepartmentPage" class="page-view hide">
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h3>Add New Department</h3>
+                    </div>
+                    <form onsubmit="addEntity(event, 'Department')">
+                        <div class="input-group">
+                            <label>Department Name</label>
+                            <input type="text" id="deptName" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Head of Department (HOD)</label>
+                            <input type="text" id="deptHOD" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Add Department</button>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Check authentication
+        window.onload = () => {
+            if(localStorage.getItem('isLoggedIn') !== 'true') {
+                window.location.href = 'index.html';
+            }
+            renderDashboard();
+        };
+    </script>
+</body>
+</html>

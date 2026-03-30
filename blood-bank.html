@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Registration</title>
+    <style>
+        :root {
+            --primary-red: #e11d48; /* Rich rose red */
+            --primary-hover: #be123c;
+            --bg-soft: #fff1f2; /* Very soft pink/red tint */
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #fecdd3;
+            --shadow-sm: 0 4px 6px -1px rgba(225, 29, 72, 0.1), 0 2px 4px -2px rgba(225, 29, 72, 0.1);
+            --shadow-md: 0 10px 15px -3px rgba(225, 29, 72, 0.15), 0 4px 6px -4px rgba(225, 29, 72, 0.1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: linear-gradient(to bottom right, var(--bg-soft), #ffffff); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            padding: 2rem; 
+            min-height: 100vh;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 2.5rem; padding-top: 1rem; }
+        .header h1 { 
+            color: transparent; 
+            background: linear-gradient(135deg, var(--primary-red), #9f1239);
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-bottom: 0.5rem; 
+            font-weight: 800;
+            font-size: 2.5rem;
+        }
+        .header p { color: var(--text-muted); font-size: 1.1rem; }
+        .form-card { 
+            background: var(--card-bg); 
+            padding: 2.5rem; 
+            border-radius: 16px; 
+            box-shadow: var(--shadow-md); 
+            border: 1px solid rgba(225, 29, 72, 0.05);
+        }
+        .form-section { margin-bottom: 2.5rem; background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+        .form-section h2 { 
+            font-size: 1.25rem; 
+            margin-bottom: 1.5rem; 
+            padding-bottom: 0.5rem;
+            color: var(--primary-hover);
+            border-bottom: 2px solid var(--border-color); 
+            display: flex;
+            align-items: center;
+        }
+        .form-section h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background: var(--primary-red);
+            border-radius: 4px;
+            margin-right: 12px;
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 650px) { .form-grid { grid-template-columns: 1fr; } }
+        .form-group { margin-bottom: 0.5rem; }
+        .form-group.full { grid-column: 1 / -1; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-main); font-size: 0.95rem; }
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], select, textarea {
+            width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background-color: #fdfbfb;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none; border-color: var(--primary-red); box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.15); background-color: #fff; transform: translateY(-1px);
+        }
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem; background: var(--bg-soft); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); }
+        .checkbox-label { 
+            display: flex; align-items: center; gap: 0.5rem; font-weight: 500; cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 4px; transition: background 0.2s;
+        }
+        .checkbox-label:hover { background: rgba(225, 29, 72, 0.05); }
+        input[type="checkbox"] { accent-color: var(--primary-red); width: 1.1rem; height: 1.1rem; cursor: pointer; }
+        .btn { 
+            display: inline-block; 
+            background: linear-gradient(135deg, var(--primary-red), #be123c); 
+            color: white; 
+            padding: 1rem 2rem; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 6px rgba(225, 29, 72, 0.25);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(225, 29, 72, 0.3); }
+        .btn:active { transform: translateY(0); }
+        #result { margin-top: 2rem; background: #0f172a; color: #38bdf8; padding: 1.5rem; border-radius: 8px; white-space: pre-wrap; font-family: monospace; display: none; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 Blood Bank Registration</h1>
+            <p>Please fill out the form below to register a new blood bank facility.</p>
+        </div>
+        
+        <div class="form-card">
+            <form id="bloodBankForm">
+                
+                <div class="form-section">
+                    <h2>Basic Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label for="bankName">Blood Bank Name *</label>
+                            <input type="text" id="bankName" name="bankName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="licenseNo">License Number *</label>
+                            <input type="text" id="licenseNo" name="licenseNo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <select id="type" name="type">
+                                <option value="Government">Government</option>
+                                <option value="Private">Private</option>
+                                <option value="NGO">NGO</option>
+                                <option value="Hospital-based">Hospital-based</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPerson">Contact Person</label>
+                            <input type="text" id="contactPerson" name="contactPerson">
+                        </div>
+                        <div class="form-group">
+                            <label for="designation">Designation</label>
+                            <input type="text" id="designation" name="designation">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Location Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state">
+                        </div>
+                        <div class="form-group">
+                            <label for="pin">PIN Code</label>
+                            <input type="text" id="pin" name="pin">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Contact Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group full">
+                            <label for="emergency">Emergency Helpline</label>
+                            <input type="text" id="emergency" name="emergencyHelpline">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Blood Bank Services</h2>
+                    <div class="form-group">
+                        <label>Blood Groups Available</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="bloodGroups" value="A+"> A+</label>
+                            <label class="checkbox-label"><input type="checkbox" name="bloodGroups" value="A-"> A-</label>
+                            <label class="checkbox-label"><input type="checkbox" name="bloodGroups" value="B+"> B+</label>
+                            <label class="checkbox-label"><input type="checkbox" name="bloodGroups" value="B-"> B-</label>
+                            <label class="checkbox-label"><input type="checkbox" name="bloodGroups" value="AB+"> AB+</label>
+                            <label class="checkbox-label"><input type="checkbox" name="bloodGroups" value="AB-"> AB-</label>
+                            <label class="checkbox-label"><input type="checkbox" name="bloodGroups" value="O+"> O+</label>
+                            <label class="checkbox-label"><input type="checkbox" name="bloodGroups" value="O-"> O-</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Components Available</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="components" value="Plasma"> Plasma</label>
+                            <label class="checkbox-label"><input type="checkbox" name="components" value="Platelets"> Platelets</label>
+                            <label class="checkbox-label"><input type="checkbox" name="components" value="Whole Blood"> Whole Blood</label>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="capacity">Storage Capacity (Units)</label>
+                            <input type="number" id="capacity" name="storageCapacity">
+                        </div>
+                        <div class="form-group">
+                            <label for="hours">Operating Hours</label>
+                            <input type="text" id="hours" name="operatingHours" placeholder="e.g. 24/7">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Staff & License</h2>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label for="moic">Medical Officer In-Charge</label>
+                            <input type="text" id="moic" name="medicalOfficer">
+                        </div>
+                        <div class="form-group">
+                            <label for="startDate">License Start Date</label>
+                            <input type="date" id="startDate" name="licenseStartDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">License End Date</label>
+                            <input type="date" id="endDate" name="licenseEndDate">
+                        </div>
+                        <div class="form-group full">
+                            <label for="affiliations">Affiliations</label>
+                            <textarea id="affiliations" name="affiliations" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Register Blood Bank</button>
+            </form>
+            
+            <pre id="result"></pre>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('bloodBankForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const dataObj = {};
+            
+            // Handle multiple checkbox values properly
+            for (let [key, value] of formData.entries()) {
+                if (dataObj[key]) {
+                    if (!Array.isArray(dataObj[key])) {
+                        dataObj[key] = [dataObj[key]];
+                    }
+                    dataObj[key].push(value);
+                } else {
+                    // Check if the key corresponds to a group of checkboxes to force an array
+                    const elem = this.elements[key];
+                    if (elem && (elem.length > 1 && elem[0].type === 'checkbox')) {
+                        dataObj[key] = [value];
+                    } else if (key === 'bloodGroups' || key === 'components') {
+                         dataObj[key] = [value];
+                    } else {
+                        dataObj[key] = value;
+                    }
+                }
+            }
+            
+            // Ensure empty arrays for unselected checkboxes if needed
+            if (!dataObj.bloodGroups) dataObj.bloodGroups = [];
+            if (!dataObj.components) dataObj.components = [];
+
+            const resultEl = document.getElementById('result');
+            resultEl.style.display = 'block';
+            resultEl.textContent = JSON.stringify(dataObj, null, 2);
+            
+            /* Optional fetch API integration
+            fetch('/api/register-blood-bank', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dataObj)
+            }).then(res => res.json())
+              .then(data => console.log('Success:', data))
+              .catch(err => console.error('Error:', err));
+            */
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Portfolio | Innovator & Developer</title>
+    <meta name="description" content="E-portfolio showcasing projects in software development, problem-solving, and innovation.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-bolt text-accent"></i> <span>Abaan Mhaisker | eportfolio</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#hackathon" class="nav-link">Hackathon</a>
+                <a href="#contact" class="nav-link btn-contact">Contact</a>
+            </nav>
+
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#hackathon" class="mobile-link">Hackathon</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-label">B.Tech Engineering Student @ VIT Mumbai</div>
+                <h1 class="hero-title">Hi, I'm <span class="text-gradient">Abaan Mhaisker</span><br>Innovating the Future.</h1>
+                <p class="hero-subtitle">19-year-old passionate software developer based in Mumbai, turning complex problems into elegant, user-centric applications.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">View My Work <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-terminal-card">
+                    <div class="terminal-header">
+                        <div class="dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">abaan@portfolio:~</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="prompt">$</span> <span class="command">whoami</span></p>
+                        <p class="output">Abaan Mhaisker</p>
+                        <p><span class="prompt">$</span> <span class="command">get_status --education</span></p>
+                        <p class="output">B.Tech 3rd Semester, VIT Mumbai</p>
+                        <p><span class="prompt">$</span> <span class="command">get_focus</span></p>
+                        <p class="output">Innovation, Code Architecture & Problem Solving</p>
+                        <p><span class="prompt pulse-cursor">_</span></p>
+                    </div>
+                    <div class="glass-card floating delay">
+                        <i class="fa-solid fa-code-compare"></i>
+                        <span>Developer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Hi, I am <strong>Abaan Mhaisker</strong>! My approach to development sits at the intersection of logical problem-solving and creative design. Whether it's architecting a robust backend system or crafting a responsive digital platform, I strive to deliver solutions that make a real impact locally and globally.</p>
+                    <p>I thrive in collaborative environments and am constantly pushing the boundaries of my knowledge through academic projects, independent study, and competitive hackathons.</p>
+
+                    <ul class="about-info-list" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+                        <li><strong><i class="fa-solid fa-user text-accent" style="width: 25px;"></i> Name:</strong> Abaan Mhaisker</li>
+                        <li><strong><i class="fa-solid fa-cake-candles text-accent" style="width: 25px;"></i> Age:</strong> 19 Years</li>
+                        <li><strong><i class="fa-solid fa-location-dot text-accent" style="width: 25px;"></i> Location:</strong> Mumbai</li>
+                        <li><strong><i class="fa-solid fa-graduation-cap text-accent" style="width: 25px;"></i> Education:</strong> B.Tech (Completed 3rd Semester)</li>
+                        <li><strong><i class="fa-solid fa-building-columns text-accent" style="width: 25px;"></i> College:</strong> Vidhyalankar Institute of Technology</li>
+                    </ul>
+                </div>
+                <div class="about-stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-medal"></i></div>
+                        <div class="stat-info">
+                            <h3>Hackathon</h3>
+                            <p>Participant 2025</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-code-branch"></i></div>
+                        <div class="stat-info">
+                            <h3>Projects</h3>
+                            <p>3+ Major Builds</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="stat-info">
+                            <h3>Student</h3>
+                            <p>Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section bg-alt" id="skills">
+        <div class="container">
+            <div class="section-header align-center">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">A curated set of tools and technologies I use to bring ideas to life.</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title"><i class="fa-brands fa-java text-accent"></i> Core Languages</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-name">Java (Core, Swing, AWT)</span></li>
+                        <li><span class="skill-name">HTML5 / CSS3</span></li>
+                        <li><span class="skill-name">JavaScript (ES6+)</span></li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="skill-category-title"><i class="fa-solid fa-database text-accent"></i> Databases</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-name">MySQL</span></li>
+                        <li><span class="skill-name">Database Management</span></li>
+                        <li><span class="skill-name">Data Integration</span></li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="skill-category-title"><i class="fa-solid fa-gears text-accent"></i> Mindset & Core Skills</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-name">Problem Solving</span></li>
+                        <li><span class="skill-name">Software Development Lifecycle</span></li>
+                        <li><span class="skill-name">Innovation & Ideation</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <a href="blood-bank.html" target="_blank" class="project-card">
+                    <div class="project-banner bg-gradient-1">
+                        <i class="fa-solid fa-droplet project-banner-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">UI/UX Design</span>
+                        </div>
+                        <h3 class="project-title">🩸 Blood Bank Registration Platform</h3>
+                        <p class="project-problem"><strong>Overview:</strong> A clean, responsive front-end UI for registering new blood bank facilities, built with semantic HTML and vanilla CSS.</p>
+                        <p class="project-solution"><strong>Features:</strong> Includes complex form handling, dynamic JSON generation from FormData, accessible form sections, and real-time interactive focus states.</p>
+                        <ul class="project-tech">
+                            <li><i class="fa-brands fa-html5"></i> HTML5</li>
+                            <li><i class="fa-brands fa-js"></i> Vanilla JS</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="https://educrit.in/" target="_blank" class="project-card">
+                    <div class="project-banner bg-gradient-2">
+                        <i class="fa-solid fa-book-open-reader project-banner-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">EdTech</span>
+                            <span class="tag">Marketplace</span>
+                        </div>
+                        <h3 class="project-title">EduCrit – Student Resource Marketplace</h3>
+                        <p class="project-problem"><strong>Problem:</strong> Educational tools like textbooks, lab equipment, and calculators are expensive and often discarded after temporary use.</p>
+                        <p class="project-solution"><strong>Solution:</strong> A circular economy platform explicitly for students. Users can buy, sell, or rent academic resources within their community, significantly driving down the cost of education.</p>
+                        <ul class="project-tech">
+                            <li><i class="fa-solid fa-store"></i> eCommerce</li>
+                            <li><i class="fa-solid fa-users"></i> Community</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="./student-enrollment-system/index.html" target="_blank" class="project-card">
+                    <div class="project-banner bg-gradient-3">
+                        <i class="fa-solid fa-graduation-cap project-banner-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Web App</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <h3 class="project-title">Student Enrollment System</h3>
+                        <p class="project-problem"><strong>Problem:</strong> Manual tracking of student enrollment requests and course management leads to administrative inefficiencies and lost records.</p>
+                        <p class="project-solution"><strong>Solution:</strong> A responsive admin dashboard with an intuitive UI to manage enrollment requests, courses, departments, and teachers with local data persistence.</p>
+                        <ul class="project-tech">
+                            <li><i class="fa-brands fa-html5"></i> HTML/CSS</li>
+                            <li><i class="fa-brands fa-js"></i> Vanilla JS</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competition History Section -->
+    <section class="hackathon section bg-alt" id="hackathon">
+        <div class="container hackathon-container">
+            <div class="hackathon-visual">
+                <div class="hackathon-badge">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+            </div>
+            <div class="hackathon-content">
+                <div class="hackathon-eyebrow">Competition History</div>
+                <h2 class="hackathon-title">Smart India Hackathon 2025</h2>
+                <p class="hackathon-desc">I am incredibly proud to have participated in the Smart India Hackathon 2025. This prestigious, fast-paced environment challenged me to think critically, collaborate effectively under pressure, and quickly prototype innovative technologies to solve pressing, nationwide problems.</p>
+                <p class="hackathon-desc" style="margin-top: 1rem;"><strong>Project:</strong> I worked on creating comprehensive <em>Telemedicine Access for Rural Healthcare in Nabha</em>. The experience fueled my dedication to bridging the healthcare divide and utilizing targeted technical systems to maximize societal impact in underserved regions.</p>
+                <div class="hackathon-highlights">
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-check-circle"></i> Social Impact & Healthcare
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-check-circle"></i> Complete End-to-End Problem Solving
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-check-circle"></i> Rapid Prototyping
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="section-header align-center">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Interested in learning more about my work or collaborating? I'd love to hear from you!</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-info">
+                    <h3>Get in touch</h3>
+                    <p>I am always open to discussing tech innovations, software development roles, or collaborative projects.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span><a href="https://mail.google.com/mail/?view=cm&fs=1&to=abaanmhaisker@gmail.com" target="_blank" rel="noopener noreferrer">abaanmhaisker@gmail.com</a></span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Based in India</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/abaanmhaisker" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/abaanmhaisker" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required placeholder="Hello, I'd like to discuss..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <i class="fa-solid fa-code"></i> <span>Portfolio</span>
+            </div>
+            <p>&copy; 2026 Engineering Innovator. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

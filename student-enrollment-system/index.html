@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Student Enrollment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <!-- Login Form -->
+        <div id="loginForm" class="auth-card active-form">
+            <div class="auth-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to the Admin Dashboard</p>
+            </div>
+            
+            <div id="loginError" class="alert hide">Invalid username or password.</div>
+
+            <form onsubmit="login(event)">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter 'admin'" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter 'admin123'" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+            
+            <div class="auth-footer">
+                <a href="#" onclick="showForgotPassword(true)">Forgot Password?</a>
+            </div>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgotForm" class="auth-card">
+            <div class="auth-header">
+                <h2>Reset Password</h2>
+                <p>Enter your username to reset password.</p>
+            </div>
+
+            <div id="resetMessage" class="alert success hide">Password reset successful! Check alert.</div>
+
+            <form onsubmit="forgotPassword(event)">
+                <div class="input-group">
+                    <label for="resetUsername">Username</label>
+                    <input type="text" id="resetUsername" placeholder="Enter 'admin'" required>
+                </div>
+                <button type="submit" class="btn-primary">Reset Password</button>
+            </form>
+            
+            <div class="auth-footer">
+                <a href="#" onclick="showForgotPassword(false)">Back to Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Check if already logged in and initialize default auth
+        window.onload = () => {
+            initAuth();
+            if(localStorage.getItem('isLoggedIn') === 'true') {
+                window.location.href = 'dashboard.html';
+            }
+        };
+    </script>
+</body>
+</html>
