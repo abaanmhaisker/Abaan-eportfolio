@@ -86,8 +86,25 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
             btn.style.opacity = '0.7';
             btn.disabled = true;
-            // Simulate sending interaction
-            setTimeout(() => {
+            // Actual sending interaction
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            
+            fetch("https://formsubmit.co/ajax/abaanmhaisker@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: nameInput ? nameInput.value : '',
+                    email: emailInput ? emailInput.value : '',
+                    message: messageInput ? messageInput.value : ''
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
                 btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
                 btn.classList.remove('btn-primary');
                 btn.style.backgroundColor = '#10b981';
@@ -101,7 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.borderColor = '';
                     btn.disabled = false;
                 }, 3000);
-            }, 1000);
+            })
+            .catch(error => {
+                btn.innerHTML = '<i class="fa-solid fa-xmark"></i> Error. Try again.';
+                btn.style.backgroundColor = '#ef4444';
+                btn.style.borderColor = '#ef4444';
+                btn.style.opacity = '1';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                    btn.disabled = false;
+                }, 3000);
+            });
         });
     }
 });
