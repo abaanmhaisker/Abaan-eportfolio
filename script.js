@@ -74,63 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    // Contact Form Submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            if (!btn)
-                return;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
-            btn.style.opacity = '0.7';
-            btn.disabled = true;
-            // Actual sending interaction
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-            
-            fetch("https://formsubmit.co/ajax/abaanmhaisker@gmail.com", {
-                method: "POST",
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: nameInput ? nameInput.value : '',
-                    email: emailInput ? emailInput.value : '',
-                    message: messageInput ? messageInput.value : ''
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
-                btn.classList.remove('btn-primary');
-                btn.style.backgroundColor = '#10b981';
-                btn.style.borderColor = '#10b981';
-                btn.style.opacity = '1';
-                contactForm.reset();
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.classList.add('btn-primary');
-                    btn.style.backgroundColor = '';
-                    btn.style.borderColor = '';
-                    btn.disabled = false;
-                }, 3000);
-            })
-            .catch(error => {
-                btn.innerHTML = '<i class="fa-solid fa-xmark"></i> Error. Try again.';
-                btn.style.backgroundColor = '#ef4444';
-                btn.style.borderColor = '#ef4444';
-                btn.style.opacity = '1';
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.backgroundColor = '';
-                    btn.style.borderColor = '';
-                    btn.disabled = false;
-                }, 3000);
-            });
-        });
-    }
+    // Contact form submission logic is temporarily disabled 
+    // to allow native HTML POST and trigger Formsubmit's activation UI.
 });
