@@ -202,8 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Learning from disappointment when not selected and using the experience to improve for SIH 2026."
             ],
             githubUrl: "https://github.com/abaanmhaisker/SIH2025.git",
-            demoUrl: null,
-            gallery: ["assets/gallery/sih2025.png"]
+            demoUrl: null
         },
         "sparsha": {
             title: "Sparsha — NGO Student Administration Platform",
@@ -233,8 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Building software for real non-profit users with a team."
             ],
             githubUrl: "https://github.com/abaanmhaisker/sparsha.git",
-            demoUrl: null,
-            gallery: ["assets/gallery/sparsha.png"]
+            demoUrl: null
         },
         "vuln-triage": {
             title: "Vulnerability Prioritization & Triage System",
@@ -294,8 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Collaborating effectively under hackathon deadlines."
             ],
             githubUrl: "https://github.com/abaanmhaisker/SIH2026.git",
-            demoUrl: null,
-            gallery: ["assets/gallery/cybershield.png"]
+            demoUrl: null
         },
 
         // --- MINI PROJECTS (5) ---
